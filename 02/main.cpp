@@ -26,31 +26,37 @@ public:
 };
 
 
-void counter(int counter, string command) {
-    cout << "Введите начальное значение счетчика: "; cin >> counter;
+void counter(string &pcommand) {
+    int counter = 0;
+    string* command1 = &pcommand;
+    if (*command1 == "да") {
+        cout << "Введите начальное значение счетчика: "; cin >> counter;
+    }
     Counter c1(counter);
     do {
-        cout << "Введите команду ('+', '-', '=' или 'x'): "; cin >> command;
-        if (command == "+") {
+        cout << "Введите команду ('+', '-', '=' или 'х'): "; cin >> *command1;
+        if (*command1 == "+") {
             c1.increase(counter);
         }
-        else if (command == "-") {
+        else if (*command1 == "-") {
             c1.decrease(counter);
         }
-        else if (command == "=") {
+        else if (*command1 == "=") {
             cout << c1.print_counter() << endl;
         }
-    }  while (command != "x");
+    }  while (*command1 != "х");
     cout << "До свидания!" << endl;
 }
 
 int main() {
-    Counter c;
-    int count = 0;
     string command;
     cout << "Вы хотите указать начальное значение счетчика? Введите да или нет: "; cin >> command;
+    string *pcommand = {&command};
     if (command == "да") {
-        counter(count, command);
+        counter(*pcommand);
+    }
+    else if (command == "нет") {
+        counter(*pcommand);
     }
     return 0;
 }
