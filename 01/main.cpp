@@ -55,27 +55,27 @@ void Calc(Calculator c) {
 
 int main() {
     Calculator c;
-    double* num1;
-    double* num2;
+    double num1;
+    double num2;
     do {
-        cout << "Введите num1: "; cin >> *num1;
-        if (*num1 <= 0) {
+        cout << "Введите num1: "; cin >> num1;
+        if (num1 <= 0) {
             do {
                 cout << "Неверный ввод!" << endl;
-                c.set_num1(*num1);
-                cout << "Введите num1: "; cin >> *num1;
-            } while (*num1 <= 0);
+                c.set_num1(num1);
+                cout << "Введите num1: "; cin >> num1;
+            } while (num1 <= 0);
         }
-        c.set_num1(*num1);
-        cout << "Введите num2: "; cin >> *num2;
-        if (*num2 <= 0) {
+        c.set_num1(num1);
+        cout << "Введите num2: "; cin >> num2;
+        if (num2 <= 0) {
             do {
                 cout << "Неверный ввод!" << endl;
-                c.set_num2(*num2);
-                cout << "Введите num2: "; cin >> *num2;
-            } while (*num2 <= 0);
+                c.set_num2(num2);
+                cout << "Введите num2: "; cin >> num2;
+            } while (num2 <= 0);
         }
-        c.set_num2(*num2);
+        c.set_num2(num2);
         Calc(c);
     } while(true);
     return 0;
